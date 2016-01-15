@@ -1,10 +1,13 @@
 package recording.com.recording;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +53,15 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
         tabs.setupWithViewPager(viewPager);
         tabs.setTabsFromPagerAdapter(adapter);
+
+
+        final FloatingActionButton actionButton = (FloatingActionButton) findViewById(R.id.bt_auction);
+        actionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Snackbar.make(actionButton,"你点击了",Snackbar.LENGTH_LONG).show();
+            }
+        });
     }
 
 }

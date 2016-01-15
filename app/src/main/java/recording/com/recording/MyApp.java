@@ -9,6 +9,6 @@ import cn.bmob.v3.Bmob;
  */
 public class MyApp extends Application {
     public MyApp(){
-        Bmob.initialize(this,"1c05091382df8544e12179e22690dc9a");
+
     }
 }
