@@ -5,36 +5,27 @@ import cn.bmob.v3.BmobObject;
 /**
  * Created by hong on 2016/1/14.
  */
-public class User extends BmobObject {
-    private String name;
-    private String pwd;
-    private int id;
+public class UserInfo extends BmobObject {
+    private String username;
+    private String password;
     private long date;
     private String phone;
     private String email;
 
-    public String getName() {
-        return name;
+    public String getPassword() {
+        return password;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getPwd() {
-        return pwd;
+    public String getUsername() {
+        return username;
     }
 
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public long getDate() {

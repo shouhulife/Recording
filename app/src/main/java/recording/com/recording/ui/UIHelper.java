@@ -13,4 +13,12 @@ public class UIHelper {
     public static void startMainUI(Context context){
         context.startActivity(new Intent(context, MainActivity.class));
     }
+    /** 启动登录页 */
+    public static void startLogin(Context context){
+        context.startActivity(new Intent(context,Login.class));
+    }
+    /** 启动注册页 */
+    public static void startRegister(Context context){
+        context.startActivity(new Intent(context,Register.class));
+    }
 }

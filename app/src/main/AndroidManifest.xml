@@ -33,6 +33,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- 登录 -->
+        <activity android:name=".ui.Login"
+            android:screenOrientation="portrait"/>
+        <!-- 注册 -->
+        <activity android:name=".ui.Register"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

@@ -1,8 +1,10 @@
 package recording.com.recording.ui;
 
+import android.app.usage.UsageEvents;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,6 +23,7 @@ import recording.com.recording.R;
  * Created by hong on 2016/1/13.
  */
 public class SplashScreen extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,9 +35,10 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                UIHelper.startMainUI(SplashScreen.this);
+                UIHelper.startLogin(SplashScreen.this);
+                SplashScreen.this.finish();
             }
-        }, 2000);
+        }, 3000);
 
         BmobQuery<StartPage> query = new BmobQuery<>();
         query.order("-createdAt");
@@ -46,7 +50,7 @@ public class SplashScreen extends AppCompatActivity {
                     tv_value.setText(list.get(0).getInspirational());
                 } else {
                     StartPage pagedata = new StartPage();
-                    pagedata.setImgUrl("http://photo.163.com/xhdshz@foxmail.com/#m=2&aid=299679088&pid=9510650497");
+                    pagedata.setImgUrl("http://img2.ph.126.net/QC227TLdA9L2j5cyNbIZQA==/6630630160073910536.jpg");
                     pagedata.setInspirational("我们走得太快，灵魂都跟不上了。");
                     pagedata.save(SplashScreen.this);
                 }
@@ -58,5 +62,13 @@ public class SplashScreen extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event){
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

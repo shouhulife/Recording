@@ -7,24 +7,29 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import recording.com.recording.adapter.TabLayViewPAdapter;
+import recording.com.recording.base.BaseAppCompatActivity;
 import recording.com.recording.fragment.Birthday;
 import recording.com.recording.fragment.Career;
 import recording.com.recording.fragment.Diary;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseAppCompatActivity {
+    private int index = 0;
+    private long mExitTime;// 退出时间判断实现双击退出
+    private TabLayout tabs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
+        tabs = (TabLayout) findViewById(R.id.tabs);
 
         List<String> titles = new ArrayList<>();
         List<Fragment> fragments = new ArrayList<>();
@@ -53,15 +58,54 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
         tabs.setupWithViewPager(viewPager);
         tabs.setTabsFromPagerAdapter(adapter);
+        tabs.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                index = tab.getPosition();
+            }
+
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
 
         final FloatingActionButton actionButton = (FloatingActionButton) findViewById(R.id.bt_auction);
         actionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(actionButton,"你点击了",Snackbar.LENGTH_LONG).show();
+                switch(index){
+                    case 0:
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                }
             }
         });
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+                if ((System.currentTimeMillis() - mExitTime) > 2000) {
+                    Snackbar.make(tabs,getResources().getString(R.string.app_exit),Snackbar.LENGTH_LONG).show();
+                    mExitTime = System.currentTimeMillis();
+                } else {
+                    finish();
+                    MyApplication.getInstance().exit();
+                }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
 }
