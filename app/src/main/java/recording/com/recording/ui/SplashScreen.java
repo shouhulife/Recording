@@ -15,8 +15,10 @@ import java.util.List;
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindListener;
+import recording.com.recording.Model.SharedpreKeyMap;
 import recording.com.recording.Model.StartPage;
 import recording.com.recording.R;
+import recording.com.recording.utils.SPUtil;
 
 /**
  * 启动界面
@@ -35,7 +37,12 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                UIHelper.startLogin(SplashScreen.this);
+                String name = new SPUtil(SplashScreen.this).getValue(SharedpreKeyMap.LoginName);
+                if(!SharedpreKeyMap.defaults.equals(name)){
+                    UIHelper.startMainUI(SplashScreen.this);
+                }else{
+                    UIHelper.startLogin(SplashScreen.this);
+                }
                 SplashScreen.this.finish();
             }
         }, 3000);

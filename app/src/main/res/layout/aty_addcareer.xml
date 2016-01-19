@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/page_bg"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_title" />
+
+    <EditText
+        android:id="@+id/career_et_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/px_30"
+        android:layout_weight="1"
+        android:gravity="top|left"
+        android:hint="请输入职业生涯记录" />
+
+
+    <EditText
+        android:id="@+id/career_et_remark"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/px_30"
+        android:layout_weight="2"
+        android:gravity="top|left"
+        android:hint="备注信息" />
+
+    <Button
+        android:id="@+id/career_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/px_30"
+        android:background="@color/bg_blue"
+        android:text="提交"
+        android:textColor="@color/white"
+        android:textSize="@dimen/px_30" />
+</LinearLayout>

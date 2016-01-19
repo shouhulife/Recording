@@ -11,10 +11,12 @@ import java.util.List;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
+import recording.com.recording.Model.SharedpreKeyMap;
 import recording.com.recording.Model.UserInfo;
 import recording.com.recording.R;
 import recording.com.recording.base.BaseAppCompatActivity;
 import recording.com.recording.utils.DES;
+import recording.com.recording.utils.SPUtil;
 
 /**
  * 注册
@@ -103,9 +105,10 @@ public class Register extends BaseAppCompatActivity {
                         }else{
                             UserInfo userinfo = new UserInfo();
                             userinfo.setUsername(user);
-                            userinfo.setDate(System.currentTimeMillis());
+                            Long date = System.currentTimeMillis();
+                            userinfo.setDate(date);
                             try {
-                                userinfo.setPassword(DES.decryptDES(pwd,getString(R.string.app_info),getString(R.string.app_info)));
+                                userinfo.setPassword(DES.encryptDES(pwd, getString(R.string.app_info), null));
                             } catch (Exception e) {
                                 Snackbar.make(usertil,"注册失败.-",Snackbar.LENGTH_LONG).show();
                                 e.printStackTrace();
@@ -115,7 +118,9 @@ public class Register extends BaseAppCompatActivity {
                                 @Override
                                 public void onSuccess() {
                                     Snackbar.make(usertil,"注册成功",Snackbar.LENGTH_LONG).show();
+                                    new SPUtil(Register.this).saveValue(SharedpreKeyMap.LoginName,user);
                                     Register.this.finish();
+                                    UIHelper.startAddUserInfo(Register.this);
                                 }
 
                                 @Override
@@ -130,9 +135,10 @@ public class Register extends BaseAppCompatActivity {
                     public void onError(int i, String s) {
                         UserInfo userinfo = new UserInfo();
                         userinfo.setUsername(user);
-                        userinfo.setDate(System.currentTimeMillis());
+                        Long date = System.currentTimeMillis();
+                        userinfo.setDate(date);
                         try {
-                            userinfo.setPassword(DES.decryptDES(pwd,getString(R.string.app_info),getString(R.string.app_info)));
+                            userinfo.setPassword(DES.encryptDES(pwd, getString(R.string.app_info), null));
                         } catch (Exception e) {
                             Snackbar.make(usertil,"注册失败.-",Snackbar.LENGTH_LONG).show();
                             e.printStackTrace();
@@ -142,7 +148,9 @@ public class Register extends BaseAppCompatActivity {
                             @Override
                             public void onSuccess() {
                                 Snackbar.make(usertil, "注册成功", Snackbar.LENGTH_LONG).show();
+                                new SPUtil(Register.this).saveValue(SharedpreKeyMap.LoginName, user);
                                 Register.this.finish();
+                                UIHelper.startAddUserInfo(Register.this);
                             }
 
                             @Override

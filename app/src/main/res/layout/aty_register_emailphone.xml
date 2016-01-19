@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include layout="@layout/view_title"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/px_30"
+        android:gravity="center"
+        android:text="为了方便找回密码请填写手机号和邮箱账号。"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/register_til_phone"
+        android:layout_margin="@dimen/px_30"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="请输入手机号"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/register_til_email"
+        android:layout_margin="@dimen/px_30"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入邮箱号"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/register_btn_register"
+        android:layout_marginLeft="@dimen/px_30"
+        android:layout_marginRight="@dimen/px_30"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/px_84"
+        android:layout_marginTop="@dimen/px_40"
+        android:background="@color/bg_blue"
+        android:text="添加"
+        android:textColor="@color/white"
+        android:textSize="@dimen/px_38" />
+</LinearLayout>

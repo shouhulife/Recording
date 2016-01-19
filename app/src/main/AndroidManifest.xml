@@ -39,6 +39,12 @@
         <!-- 注册 -->
         <activity android:name=".ui.Register"
             android:screenOrientation="portrait"/>
+        <!-- 完善资料 -->
+        <activity android:name=".ui.AddPandE"
+            android:screenOrientation="portrait"/>
+        <!-- 添加职业生涯 -->
+        <activity android:name=".ui.AddCareer"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

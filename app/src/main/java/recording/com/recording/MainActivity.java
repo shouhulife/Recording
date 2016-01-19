@@ -18,6 +18,7 @@ import recording.com.recording.base.BaseAppCompatActivity;
 import recording.com.recording.fragment.Birthday;
 import recording.com.recording.fragment.Career;
 import recording.com.recording.fragment.Diary;
+import recording.com.recording.ui.UIHelper;
 
 public class MainActivity extends BaseAppCompatActivity {
     private int index = 0;
@@ -83,6 +84,7 @@ public class MainActivity extends BaseAppCompatActivity {
             public void onClick(View v) {
                 switch(index){
                     case 0:
+                        UIHelper.startAddCareer(MainActivity.this);
                         break;
                     case 1:
                         break;

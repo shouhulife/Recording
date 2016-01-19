@@ -21,4 +21,12 @@ public class UIHelper {
     public static void startRegister(Context context){
         context.startActivity(new Intent(context,Register.class));
     }
+    /** 启动完善个人资料页面 */
+    public static void startAddUserInfo(Context context){
+        context.startActivity(new Intent(context,AddPandE.class));
+    }
+    /** 添加职业生涯记录页面 */
+    public static void startAddCareer(Context context){
+        context.startActivity(new Intent(context, AddCareer.class));
+    }
 }
