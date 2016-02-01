@@ -6,7 +6,6 @@ import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 
@@ -16,7 +15,7 @@ import java.util.List;
 import recording.com.recording.adapter.TabLayViewPAdapter;
 import recording.com.recording.base.BaseAppCompatActivity;
 import recording.com.recording.fragment.Birthday;
-import recording.com.recording.fragment.Career;
+import recording.com.recording.fragment.CareerF;
 import recording.com.recording.fragment.Diary;
 import recording.com.recording.ui.UIHelper;
 
@@ -38,7 +37,7 @@ public class MainActivity extends BaseAppCompatActivity {
         String titlec = "职业生涯";
         tabs.addTab(tabs.newTab().setText(titlec));
         titles.add(titlec);
-        Fragment fragment = new Career();
+        Fragment fragment = new CareerF();
         fragments.add(fragment);
 
         String titled = "日记";
