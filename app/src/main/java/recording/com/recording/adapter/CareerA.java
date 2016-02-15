@@ -34,6 +34,14 @@ public class CareerA extends BaseAdapter {
         }
     }
 
+    public void setData(List<Career> list){
+        if(this.list!=null){
+            this.list.clear();
+            this.list.addAll(list);
+        }
+        this.notifyDataSetChanged();
+    }
+
     @Override
     public Object getItem(int position) {
         return list.get(position);

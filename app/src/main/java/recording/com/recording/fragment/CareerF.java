@@ -8,6 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
@@ -25,8 +28,9 @@ import recording.com.recording.xlv.XListView;
  */
 public class CareerF extends Fragment{
     XListView xlv;
-    private int pageSize = 10, pageIndex = 1;
+    private int pageSize = 10, pageIndex = 0;
     CareerA adapter;
+    List<Career> listC;
 
     @Nullable
     @Override
@@ -39,20 +43,53 @@ public class CareerF extends Fragment{
     private void init(View v){
         xlv = (XListView) v.findViewById(R.id.fmtcareer_xlv);
         getData();
+        xlv.setPullLoadEnable(true);
+        xlv.setXListViewListener(new XListView.IXListViewListener() {
+            @Override
+            public void onRefresh() {
+                pageIndex = 0;
+                getData();
+            }
+
+            @Override
+            public void onLoadMore() {
+                pageIndex++;
+                getData();
+            }
+        });
     }
 
     private void getData(){
         BmobQuery<Career> query = new BmobQuery<Career>();
         query.addWhereEqualTo("userid", new SPUtil(getActivity()).getValue(SharedpreKeyMap.LoginName));
         query.setLimit(pageSize);//每页多少条
-        query.setSkip(pageSize * pageIndex);
+        int sizep = pageSize * pageIndex;
+        query.setSkip(sizep);
         query.findObjects(getActivity(), new FindListener<Career>() {
             @Override
             public void onSuccess(List<Career> list) {
-                if(list.size()>0){
-                    adapter = new CareerA(CareerF.this.getActivity(),list);
-                    xlv.setAdapter(adapter);
+                if (list.size() > 0) {
+                    if(pageIndex == 0){
+                        if(listC!=null){
+                            listC.clear();
+                        }else{
+                            listC = new ArrayList<Career>();
+                        }
+                        listC.addAll(list);
+                        adapter = new CareerA(CareerF.this.getActivity(), listC);
+                        xlv.setAdapter(adapter);
+                    }else{
+                        listC.addAll(list);
+                        adapter.setData(listC);
+                        xlv.stopLoadMore();
+                        xlv.endLoadMore(pageSize, list.size());
+                    }
+                    xlv.stopRefresh();
+                    xlv.setRefreshTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+                }else{
+                    xlv.endLoadMore();
                 }
+//                Snackbar.make(xlv, list.size()+"==", Snackbar.LENGTH_LONG).show();
             }
 
             @Override

@@ -10,10 +10,12 @@ import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindListener;
+import recording.com.recording.Model.SharedpreKeyMap;
 import recording.com.recording.Model.UserInfo;
 import recording.com.recording.R;
 import recording.com.recording.base.BaseAppCompatActivity;
 import recording.com.recording.utils.DES;
+import recording.com.recording.utils.SPUtil;
 
 /**
  * 登录
@@ -45,7 +47,7 @@ public class Login extends BaseAppCompatActivity implements OnClickListener{
                 UIHelper.startRegister(this);
                 break;
             case R.id.login_but_login:
-                String user = usertil.getEditText().getText().toString();
+                final String user = usertil.getEditText().getText().toString();
                 final String pwd = pwdtil.getEditText().getText().toString();
                 if(user.isEmpty()){
                     usertil.setError("用户名不能为空");
@@ -64,6 +66,7 @@ public class Login extends BaseAppCompatActivity implements OnClickListener{
                                     try {
                                         String mm = DES.encryptDES(pwd,getString(R.string.app_info),null);
                                         if(mm.equals(list.get(0).getPassword())){
+                                            new SPUtil(Login.this).saveValue(SharedpreKeyMap.LoginName,user);
                                             UIHelper.startMainUI(Login.this);
                                         }else{
                                             pwdtil.setError("密码错误请重新输入");

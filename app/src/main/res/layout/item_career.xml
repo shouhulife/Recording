@@ -11,14 +11,20 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:singleLine="true"
-        android:layout_margin="@dimen/px_10"
+        android:layout_marginLeft="@dimen/px_10"
+        android:layout_marginRight="@dimen/px_10"
+        android:layout_marginTop="@dimen/px_20"
+        android:layout_marginBottom="@dimen/px_20"
         android:textColor="@color/text666"
         android:textSize="@dimen/px_30"/>
     <TextView
         android:id="@+id/itemcareer_tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/px_10"
+        android:layout_marginLeft="@dimen/px_10"
+        android:layout_marginRight="@dimen/px_10"
+        android:layout_marginTop="@dimen/px_20"
+        android:layout_marginBottom="@dimen/px_20"
         android:textColor="@color/text999"
         android:textSize="@dimen/px_30"/>
 </LinearLayout>
