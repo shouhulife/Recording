@@ -11,4 +11,5 @@
     <string name="xlistview_footer_hint_normal">查看更多</string>
     <string name="xlistview_footer_hint_ready">松开载入更多</string>
     <string name="xlistview_footer_hint_end">已加载所有数据</string>
+    <string name="nologin">未登录，请登录后提交!</string>
 </resources>

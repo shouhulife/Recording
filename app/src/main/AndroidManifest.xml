@@ -45,6 +45,9 @@
         <!-- 添加职业生涯 -->
         <activity android:name=".ui.AddCareer"
             android:screenOrientation="portrait"/>
+        <!-- 添加生日记录 -->
+        <activity android:name=".ui.AddBirthday"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

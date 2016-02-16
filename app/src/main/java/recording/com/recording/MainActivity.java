@@ -88,6 +88,7 @@ public class MainActivity extends BaseAppCompatActivity {
                     case 1:
                         break;
                     case 2:
+                        UIHelper.startAddBirthday(MainActivity.this);
                         break;
                 }
             }

@@ -46,6 +46,11 @@ public class AddCareer extends BaseAppCompatActivity implements View.OnClickList
                 finish();
                 break;
             case R.id.career_btn:
+                String name = new SPUtil(this).getValue(SharedpreKeyMap.LoginName);
+                if(name.equals(SharedpreKeyMap.defaults)){
+                    Snackbar.make(et_content, getString(R.string.nologin), Snackbar.LENGTH_LONG).show();
+                    return;
+                }
                 String content = et_content.getText().toString().trim();
                 String remark = et_remark.getText().toString().trim();
                 if(content.isEmpty()){

@@ -7,21 +7,18 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
-import recording.com.recording.Model.Career;
+import recording.com.recording.Model.Birthday;
 import recording.com.recording.R;
 
 /**
- * 生涯数据适配器
- * Created by zhangh on 2016/2/1.
+ * Created by zhangh on 2016/2/16.
  */
-public class CareerA extends BaseAdapter {
-    List<Career> list;
+public class BirthdayA extends BaseAdapter{
+    List<Birthday> list;
     Context context;
-    public CareerA(Context context, List<Career> list){
+    public BirthdayA(Context context, List<Birthday> list){
         this.list = list;
         this.context = context;
     }
@@ -35,7 +32,7 @@ public class CareerA extends BaseAdapter {
         }
     }
 
-    public void setData(List<Career> list){
+    public void setData(List<Birthday> list){
         if(this.list!=null){
             this.list.clear();
             this.list.addAll(list);
@@ -60,9 +57,9 @@ public class CareerA extends BaseAdapter {
         }
         TextView tv_con = (TextView) view.findViewById(R.id.itemcareer_tv_content);
         TextView tv_date = (TextView) view.findViewById(R.id.itemcareer_tv_date);
-        tv_con.setText(list.get(position).getContent());
-        SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd");
-        tv_date.setText(format.format(new Date(list.get(position).getDate())));
+
+        tv_con.setText(list.get(position).getRelationship()+"-"+list.get(position).getName());
+        tv_date.setText(list.get(position).getBirthday());
         return view;
     }
 }

@@ -29,4 +29,8 @@ public class UIHelper {
     public static void startAddCareer(Context context){
         context.startActivity(new Intent(context, AddCareer.class));
     }
+    /** 添加生日记录页面 */
+    public static void startAddBirthday(Context context){
+        context.startActivity(new Intent(context, AddBirthday.class));
+    }
 }
